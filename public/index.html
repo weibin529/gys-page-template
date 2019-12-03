@@ -6,23 +6,20 @@
     <meta name="viewport" content="width=device-width,initial-scale=1.0">
     <link rel="icon" href="<%= BASE_URL %>favicon.ico">
 
-    <!-- <title>project</title> -->
     <title><%= htmlWebpackPlugin.options.title %></title>
-    <!-- <link  href="/wl/web-components/public-lib/element/css/index.css" /> -->
-    <link href="/wl/web-components/public-lib/element/css/index.css" rel="stylesheet">
-    <link rel="stylesheet" href="/wl/web-components/public-lib/gys-page-frame/index.css" />
+       <% if(htmlWebpackPlugin.options.cdnConfig&&htmlWebpackPlugin.options.cdnConfig.cssList) {%>
+      <% for(var item of htmlWebpackPlugin.options.cdnConfig.cssList) { %>
+        <link href="<%=item%>" rel="stylesheet" />
+      <% } %>
+    <% } %>
   </head>
   <body>
     <div id="app"></div>
-    <script type="text/javascript" src="/wl/web-components/public-lib/vue/vue.min.js"></script>
-    <script type="text/javascript" src="/wl/web-components/public-lib/vuex/vuex.min.js"></script>
-    <script type="text/javascript" src="/wl/web-components/public-lib/vue-router/vue-router.min.js"></script>
-    <script type="text/javascript" src="/wl/web-components/public-lib/axios/axios.min.js"></script>
-    <script type="text/javascript" src="/wl/web-components/public-lib/element/js/index.js"></script>
-    <script type="text/javascript" src="/wl/web-components/public-lib/gys-page-frame/index.js"></script>
-    <!-- 以下三个js是为了解决跳转到其他老页面出错引入的，当不老页面没有了就可以移除 -->
-    <script type="text/javascript" src="/wl/web-components/public-lib/old/jquery-1.11.3.min.js"></script>
-    <script type="text/javascript" src="/wl/web-components/public-lib/old/cookie.js"></script>
-    <script type="text/javascript" src="/wl/web-components/public-lib/old/permission.js"></script>
+    <% if(htmlWebpackPlugin.options.cdnConfig&&htmlWebpackPlugin.options.cdnConfig.jsList) {%>
+      <% for(var item of htmlWebpackPlugin.options.cdnConfig.jsList) { %>
+        <script type="text/javascript" src="<%=item%>"></script>
+      <% } %>
+    <% } %>
+
   </body>
 </html>
